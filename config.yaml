@@ -1,0 +1,119 @@
+project:
+  name: "real-esrgan-babad-banyumas"
+  seed: 42
+  device: "cuda"
+
+scraping:
+  sources:
+    - name: "google_images"
+      keywords:
+        - "ancient javanese manuscript high resolution"
+        - "naskah kuno aksara jawa scan"
+        - "historical document manuscript indonesia HD"
+        - "old manuscript handwriting degraded paper"
+        - "ICDAR historical document dataset"
+        - "ancient parchment manuscript text"
+        - "babad banyumas naskah kuno"
+      max_per_keyword: 80
+    - name: "bing_images"
+      keywords:
+        - "ancient manuscript restoration dataset"
+        - "historical document degraded scan"
+        - "javanese script old paper"
+      max_per_keyword: 60
+  output_dir: "data/raw"
+  min_image_size: [256, 256]
+  allowed_formats: ["jpg", "jpeg", "png", "tiff", "tif", "bmp"]
+  delay_between_requests: 1.5
+  timeout: 15
+  max_retries: 3
+
+dataset:
+  hr_size: 512
+  lr_scale: 4
+  lr_size: 128
+  total_target: 1200
+  split_ratio:
+    train: 0.70
+    val: 0.15
+    test: 0.15
+  hr_dir: "data/processed/HR"
+  lr_dir: "data/processed/LR"
+  splits_dir: "data/splits"
+
+degradation:
+  first_order:
+    blur:
+      types: ["gaussian", "anisotropic_gaussian", "motion"]
+      gaussian_sigma_range: [0.1, 3.0]
+      motion_kernel_size_range: [7, 21]
+      probability: 0.8
+    resize:
+      methods: ["bicubic", "bilinear", "area", "nearest"]
+      scale_range: [0.15, 1.0]
+    noise:
+      types: ["gaussian", "poisson"]
+      gaussian_std_range: [0, 25]
+      poisson_scale_range: [0.05, 3.0]
+      probability: 0.7
+    jpeg:
+      quality_range: [30, 95]
+      probability: 0.6
+  second_order:
+    enabled: true
+    blur_probability: 0.5
+    noise_probability: 0.4
+    jpeg_probability: 0.5
+  sinusoidal:
+    enabled: true
+    frequency_range: [6, 16]
+    probability: 0.2
+
+augmentation:
+  horizontal_flip_prob: 0.5
+  vertical_flip_prob: 0.1
+  rotation_prob: 0.3
+  brightness_range: [-0.2, 0.2]
+  contrast_range: [0.8, 1.2]
+
+model:
+  generator:
+    in_channels: 3
+    out_channels: 3
+    num_features: 64
+    num_rrdb: 23
+    upscale_factor: 4
+    residual_scaling: 0.2
+  discriminator:
+    in_channels: 3
+    num_features: 64
+    num_blocks: 5
+    spectral_norm: true
+
+training:
+  epochs: 400
+  batch_size: 8
+  patch_size: 128
+  num_workers: 4
+  optimizer:
+    lr_g: 1.0e-4
+    lr_d: 1.0e-4
+    betas: [0.9, 0.99]
+  scheduler:
+    milestones: [100, 200, 300]
+    gamma: 0.5
+  loss_weights:
+    l1: 1.0
+    perceptual: 1.0
+    gan: 0.1
+  save_every: 10
+  validate_every: 5
+  checkpoint_dir: "checkpoints"
+  resume_from: null
+  use_amp: true
+
+evaluation:
+  metrics: ["psnr", "ssim", "lpips"]
+  lpips_network: "alex"
+  num_visual_samples: 20
+  results_dir: "results"

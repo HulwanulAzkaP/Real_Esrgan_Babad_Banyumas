@@ -1,0 +1,32 @@
+[2026-02-20 16:26:38] [INFO] Scraping source: google_images
+[2026-02-20 16:26:38] [ERROR] Google scrape error for 'ancient javanese manuscript high resolution': Crawler.__init__() got an unexpected keyword argument 'num_t'
+[2026-02-20 16:26:38] [INFO]   'ancient javanese manuscript high resolution': 0 valid images
+[2026-02-20 16:26:38] [ERROR] Google scrape error for 'naskah kuno aksara jawa scan': Crawler.__init__() got an unexpected keyword argument 'num_t'
+[2026-02-20 16:26:38] [INFO]   'naskah kuno aksara jawa scan': 0 valid images
+[2026-02-20 16:26:38] [ERROR] Google scrape error for 'historical document manuscript indonesia HD': Crawler.__init__() got an unexpected keyword argument 'num_t'
+[2026-02-20 16:26:38] [INFO]   'historical document manuscript indonesia HD': 0 valid images
+[2026-02-20 16:26:38] [ERROR] Google scrape error for 'old manuscript handwriting degraded paper': Crawler.__init__() got an unexpected keyword argument 'num_t'
+[2026-02-20 16:26:38] [INFO]   'old manuscript handwriting degraded paper': 0 valid images
+[2026-02-20 16:26:38] [ERROR] Google scrape error for 'ICDAR historical document dataset': Crawler.__init__() got an unexpected keyword argument 'num_t'
+[2026-02-20 16:26:38] [INFO]   'ICDAR historical document dataset': 0 valid images
+[2026-02-20 16:26:38] [ERROR] Google scrape error for 'ancient parchment manuscript text': Crawler.__init__() got an unexpected keyword argument 'num_t'
+[2026-02-20 16:26:38] [INFO]   'ancient parchment manuscript text': 0 valid images
+[2026-02-20 16:26:38] [ERROR] Google scrape error for 'babad banyumas naskah kuno': Crawler.__init__() got an unexpected keyword argument 'num_t'
+[2026-02-20 16:26:38] [INFO]   'babad banyumas naskah kuno': 0 valid images
+[2026-02-20 16:26:38] [INFO] Scraping source: bing_images
+[2026-02-20 16:26:38] [ERROR] Bing scrape error for 'ancient manuscript restoration dataset': Crawler.__init__() got an unexpected keyword argument 'num_t'
+[2026-02-20 16:26:38] [INFO]   'ancient manuscript restoration dataset': 0 valid images
+[2026-02-20 16:26:38] [ERROR] Bing scrape error for 'historical document degraded scan': Crawler.__init__() got an unexpected keyword argument 'num_t'
+[2026-02-20 16:26:38] [INFO]   'historical document degraded scan': 0 valid images
+[2026-02-20 16:26:38] [ERROR] Bing scrape error for 'javanese script old paper': Crawler.__init__() got an unexpected keyword argument 'num_t'
+[2026-02-20 16:26:38] [INFO]   'javanese script old paper': 0 valid images
+[2026-02-20 16:26:38] [INFO] Manifest saved to data/raw/manifest.csv
+[2026-02-20 16:26:40] [INFO] Collecting source images from: data/raw
+[2026-02-20 16:26:40] [INFO] Found 0 valid source images
+[2026-02-20 16:26:40] [ERROR] No source images found. Run 1_scrape_images.py first.
+[2026-02-20 16:26:42] [INFO] Scanning HR directory: data/processed/HR
+[2026-02-20 16:26:42] [INFO] Found 0 HR files
+[2026-02-20 16:26:42] [INFO] Valid pairs: 0, Skipped: 0
+[2026-02-20 16:26:42] [ERROR] No valid pairs found. Run 2_build_dataset.py first.
+[2026-02-20 16:26:45] [INFO] Using device: cuda
+[2026-02-20 16:30:00] [INFO] Using device: cuda
